@@ -14,4 +14,8 @@ public interface ChatHistoryRepository extends JpaRepository<ChatHistory, Long> 
     @RestResource(exported = false)
     void deleteById(Long id); // Disables DELETE /myEntities/{id}
 
+
+//    @Query("SELECT c FROM ChatHistory c WHERE c.chatId = :chatId")
+//    List<ChatHistory> findByChatId(@Param("chatId") Long chatId);
+
 }
