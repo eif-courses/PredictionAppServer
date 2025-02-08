@@ -17,8 +17,6 @@ import java.io.IOException;
 import java.io.InputStream;
 
 
-
-
 @RestController
 @RequestMapping("/chatbot")
 public class ChatBotController {
