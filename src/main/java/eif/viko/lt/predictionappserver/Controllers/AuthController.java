@@ -31,6 +31,16 @@ public class AuthController {
         return ResponseEntity.ok(registeredUser);
     }
 
+//    {
+//        "email": "eif@viko.lt",
+//            "password": "Kolegija1@",
+//            "username": "Marius"
+//    }
+
+
+
+
+
     @PostMapping("/login")
     public ResponseEntity<LoginResponseDto> authenticate(@RequestBody LoginRequestDto loginUserDto) {
         ChatUser authenticatedUser = authenticationService.authenticate(loginUserDto);
@@ -43,4 +53,11 @@ public class AuthController {
 
         return ResponseEntity.ok(loginResponse);
     }
+
+    //    {
+//        "email": "eif@viko.lt",
+//            "password": "Kolegija1@"
+//    }
+
+
 }
