@@ -35,15 +35,17 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/auth/**").permitAll()  // Allow unauthenticated access to /auth/**
-                        .anyRequest().authenticated()               // Require authentication for any other requests
+                                .requestMatchers("/auth/**").permitAll()  // Allow unauthenticated access to /auth/**
+                                .requestMatchers("/swagger-ui/**").permitAll()  // Allow unauthenticated access to Swagger UI
+                                .requestMatchers("/v3/api-docs/**").permitAll()  // Allow unauthenticated access to API docs
+                                .requestMatchers("/v2/api-docs/**").permitAll()  // Allow unauthenticated access to API docs for Swagger 2
+                        //.anyRequest().authenticated()               // Require authentication for any other requests
                 )
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)  // Use stateless session management
                 )
                 .authenticationProvider(authenticationProvider)                // Add your custom authentication provider
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);  // Add JWT filter
-
 
         return http.build();
     }
